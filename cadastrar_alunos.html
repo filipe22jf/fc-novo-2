@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Alunos e Configurações - FitCraft</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="FitCraft Personal">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2f3e5c">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="images/cabecalho_sem_fundo.png" alt="FitCraft Logo" class="fitcraft-logo-header">
+        </header>
+
+        <section class="content-section">
+            <h2>Cadastro de Alunos</h2>
+            <p>Gerencie o cadastro de novos alunos e configure os detalhes da consultoria.</p>
+            
+            <div class="form-card">
+                <h3>Informações do Aluno</h3>
+                <div class="form-group">
+                    <label for="nome-aluno-cadastro">Nome Completo</label>
+                    <input type="text" id="nome-aluno-cadastro" placeholder="Digite o nome do aluno">
+                </div>
+                <div class="form-group">
+                    <label for="data-cadastro">Data de Início</label>
+                    <input type="date" id="data-cadastro">
+                </div>
+                <div class="form-group">
+                    <label for="valor-consultoria">Valor da Consultoria (R$)</label>
+                    <input type="number" id="valor-consultoria" placeholder="Ex: 150.00" step="0.01">
+                </div>
+                <button class="add-exercise-btn" id="btn-salvar-aluno">Salvar Aluno</button>
+            </div>
+
+            <div class="form-card">
+                <h3>Alunos Cadastrados</h3>
+                <ul id="lista-alunos-cadastrados" class="client-list">
+                    <!-- Alunos serão listados aqui -->
+                </ul>
+            </div>
+
+            <button class="back-button" onclick="window.location.href=\'index.html\'" style="margin-top: 20px;">Voltar ao Dashboard</button>
+        </section>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnSalvarAluno = document.getElementById("btn-salvar-aluno");
+            const nomeAlunoCadastro = document.getElementById("nome-aluno-cadastro");
+            const dataCadastro = document.getElementById("data-cadastro");
+            const valorConsultoria = document.getElementById("valor-consultoria");
+            const listaAlunosCadastrados = document.getElementById("lista-alunos-cadastrados");
+
+            let alunos = JSON.parse(localStorage.getItem("alunosFitCraft")) || [];
+
+            function renderizarAlunos() {
+                listaAlunosCadastrados.innerHTML = "";
+                if (alunos.length === 0) {
+                    listaAlunosCadastrados.innerHTML = 
+                        `<li class="empty-state-list">
+                            Nenhum aluno cadastrado ainda.
+                        </li>`;
+                    return;
+                }
+                alunos.forEach((aluno, index) => {
+                    const li = document.createElement("li");
+                    li.className = "client-item-list";
+                    li.innerHTML = `
+                        <span>${aluno.nome}</span>
+                        <span>Início: ${aluno.dataCadastro}</span>
+                        <span>Valor: R$ ${parseFloat(aluno.valorConsultoria).toFixed(2).replace(".", ",")}</span>
+                        <button class="remove-client-btn" data-index="${index}">Remover</button>
+                    `;
+                    listaAlunosCadastrados.appendChild(li);
+                });
+                adicionarEventosRemover();
+            }
+
+            function adicionarEventosRemover() {
+                document.querySelectorAll(".remove-client-btn").forEach(button => {
+                    button.onclick = function() {
+                        const index = this.dataset.index;
+                        alunos.splice(index, 1);
+                        localStorage.setItem("alunosFitCraft", JSON.stringify(alunos));
+                        renderizarAlunos();
+                    };
+                });
+            }
+
+            btnSalvarAluno.onclick = function() {
+                const nome = nomeAlunoCadastro.value.trim();
+                const data = dataCadastro.value;
+                const valor = valorConsultoria.value;
+
+                if (nome && data && valor) {
+                    alunos.push({ 
+                        nome,
+                        dataCadastro: new Date(data + \'T12:00:00\').toLocaleDateString(\'pt-BR\'),
+                        valorConsultoria: parseFloat(valor)
+                    });
+                    localStorage.setItem("alunosFitCraft", JSON.stringify(alunos));
+                    nomeAlunoCadastro.value = "";
+                    dataCadastro.value = "";
+                    valorConsultoria.value = "";
+                    renderizarAlunos();
+                } else {
+                    alert("Por favor, preencha todos os campos para cadastrar o aluno.");
+                }
+            };
+
+            renderizarAlunos();
+        });
+    </script>
+</body>
+</html>
+
+
+
+    <script>
+        if (
+            'serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered: ', registration);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+
+

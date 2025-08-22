@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>FitCraft Personal</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="FitCraft Personal">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2f3e5c">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA Keyboard Fix -->
+    <script src="pwa-keyboard-fix.js"></script>
+    
+    <!-- Script PWA Inline para garantir funcionamento -->
+    <script>
+    // Solução ROBUSTA para teclado PWA - Execução garantida
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('PWA Keyboard Fix - Iniciando inline...');
+        
+        function fixInputsInline() {
+            const inputs = document.querySelectorAll('input, textarea');
+            console.log('Inputs encontrados (inline):', inputs.length);
+            
+            inputs.forEach((input, index) => {
+                console.log(`Configurando input ${index} (inline):`, input.type, input.id);
+                
+                // Remove atributos que podem bloquear
+                input.removeAttribute('readonly');
+                input.removeAttribute('disabled');
+                
+                // Força propriedades essenciais
+                input.style.pointerEvents = 'auto';
+                input.style.userSelect = 'text';
+                input.style.webkitUserSelect = 'text';
+                input.style.touchAction = 'manipulation';
+                
+                // Event listeners SIMPLES e FUNCIONAIS
+                input.addEventListener('touchstart', function(e) {
+                    console.log('TouchStart no input (inline):', this.id || this.type);
+                    this.focus();
+                }, { passive: true });
+                
+                input.addEventListener('click', function(e) {
+                    console.log('Click no input (inline):', this.id || this.type);
+                    this.focus();
+                });
+                
+                input.addEventListener('focus', function(e) {
+                    console.log('Focus no input (inline):', this.id || this.type);
+                    // Força o cursor no final
+                    setTimeout(() => {
+                        if (this.value) {
+                            this.setSelectionRange(this.value.length, this.value.length);
+                        }
+                    }, 10);
+                });
+            });
+        }
+        
+        // Executa imediatamente
+        fixInputsInline();
+        
+        // Reexecuta quando novos elementos são adicionados
+        const observer = new MutationObserver(fixInputsInline);
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        console.log('PWA Keyboard Fix - Configurado inline!');
+    });
+    </script>
+    
+    <!-- PDFMake CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="images/cabecalho_sem_fundo.png" alt="FitCraft Logo" class="fitcraft-logo-header">
+        </header>
+
+        <section class="data-panel">
+            <button class="card dashboard-button" id="btn-ver-clientes">
+                <img src="images/botao_clientes_ativos.png" alt="Ver Clientes Ativos" class="button-image">
+            </button>
+            <button class="card dashboard-button" id="btn-criar-ficha">
+                <img src="images/botao_criar_pdf.png" alt="Criar Ficha e Salvar PDF" class="button-image">
+            </button>
+            <button class="card dashboard-button" id="btn-gifs">
+                <img src="images/botao_gifs.png" alt="GIFs" class="button-image">
+            </button>
+        </section>
+
+        <section class="next-workouts">
+            <h2>Últimos Treinos</h2>
+            <div class="workout-list" id="lista-ultimos-treinos">
+                <div class="empty-state">
+                    <div class="empty-icon">🗂️</div>
+                    <div>Nenhuma ficha gerada ainda</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reports">
+            <h2>Relatórios</h2>
+            <div class="reports-summary">
+                <div class="report-card">
+                    <div class="chart-placeholder"></div>
+                </div>
+                <div class="report-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">↑ 12%</span>
+                        <span class="stat-label">Força</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">72</span>
+                        <span class="stat-label">Treinos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">18</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">13</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
+
+
+    <script>
+        if (
+            'serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered: ', registration);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+
+

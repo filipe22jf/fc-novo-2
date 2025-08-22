@@ -1,0 +1,1177 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1e2a4a 0%, #2c3e50 50%, #34495e 100%);
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.fitcraft-logo-header {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-title {
+    font-size: 2.2em;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.data-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: none;
+    border-radius: 15px;
+    padding: 0;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.button-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .button-image {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.next-workouts {
+    margin-bottom: 30px;
+}
+
+.next-workouts h2 {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.workout-list {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.empty-state {
+    text-align: center;
+    color: #a0a0a0;
+    padding: 40px 20px;
+}
+
+.empty-state .empty-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.reports {
+    margin-bottom: 20px;
+}
+
+.reports h2 {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.reports-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.report-card {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(52, 152, 219, 0.3);
+}
+
+.report-card .chart-placeholder {
+    width: 60px;
+    height: 60px;
+    background: #9fe6a0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.report-card .chart-placeholder::after {
+    content: "📊";
+}
+
+.report-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-item {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #9fe6a0;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* Estilos para outras páginas */
+.form-card {
+    background-color: #0f3460;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-card h3 {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-bottom: 2px solid #9fe6a0;
+    padding-bottom: 10px;
+}
+
+.form-card h4 {
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row .form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #a0a0a0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-row .form-group input[type="text"],
+.form-row .form-group input[type="date"],
+.form-row .form-group input[type="number"],
+.form-row .form-group select {
+    height: 50px !important;
+    padding: 15px !important;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 16px;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-row .form-group input[type="date"] {
+    background-image: none;
+    padding-right: 15px;
+}
+
+
+
+/* Estilos para os itens de treino */
+.treino-item {
+    background: #1a1a2e;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid #9fe6a0;
+    transition: all 0.3s ease;
+}
+
+.treino-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.treino-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.treino-header h4 {
+    margin: 0;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.treino-data {
+    color: #a0a0a0;
+    font-size: 0.9em;
+}
+
+.treino-info {
+    color: #9fe6a0;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.exercicios-count {
+    background: rgba(159, 230, 160, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(159, 230, 160, 0.3);
+}
+
+
+
+/* Estilos para o botão Voltar na página de criação de ficha */
+.btn-voltar {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-voltar:hover {
+    transform: translateX(-5px);
+}
+
+.btn-voltar img {
+    width: 40px; /* Tamanho adequado para o ícone */
+    height: auto;
+}
+
+/* Ajustes gerais para a página de criação de ficha */
+.workout-creator {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-card {
+    background-color: #0f3460;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-card h3 {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-bottom: 2px solid #9fe6a0;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #a0a0a0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 16px;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-group input[type="date"] {
+    background-image: none;
+    padding-right: 15px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.add-exercise-btn,
+.pdf-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.add-exercise-btn {
+    background-color: #9fe6a0;
+    color: #1a1a2e;
+    box-shadow: 0 5px 15px rgba(159, 230, 160, 0.3);
+}
+
+.add-exercise-btn:hover {
+    background-color: #8cd98e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(159, 230, 160, 0.4);
+}
+
+.pdf-btn {
+    background-color: #3498db;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.pdf-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* Estilos para a lista de exercícios adicionados */
+.exercise-item {
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid #9fe6a0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-item h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #e0e0e0;
+    font-size: 1.1em;
+}
+
+.exercise-item .details {
+    color: #a0a0a0;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.exercise-item .technique {
+    font-size: 0.8em;
+    color: #3498db;
+    font-weight: 600;
+}
+
+.exercise-item .remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.exercise-item .remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.counter {
+    text-align: center;
+    color: #a0a0a0;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.pdf-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pdf-section h4 {
+    text-align: center;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.pdf-section p {
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: #a0a0a0;
+}
+
+.loading .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #9fe6a0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading.show {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .data-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .reports-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+
+
+
+
+/* Estilos para o botão Voltar (imagem) em clientes.html e cadastrar_alunos.html */
+.back-button-image {
+    display: block;
+    width: 60px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    margin: 20px auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.back-button-image:hover {
+    transform: scale(1.05);
+}
+
+.back-button-image img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .data-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .reports-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .data-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .main-title {
+        font-size: 1.8em;
+    }
+
+    .next-workouts h2,
+    .reports h2 {
+        font-size: 1.3em;
+    }
+
+    .stat-value {
+        font-size: 1.5em;
+    }
+
+    .form-card h3 {
+        font-size: 1.1em;
+    }
+
+    .add-exercise-btn,
+    .pdf-btn {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+
+
+
+
+
+/* Media Queries para Responsividade Mobile */
+@media (max-width: 768px) {
+    /* MOBILE: Alinhamento à esquerda */
+    body {
+        padding: 5px;
+        min-height: 100vh;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 10px;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 15px;
+    }
+
+    .header .fitcraft-logo-header {
+        max-width: 200px;
+        margin-bottom: 15px;
+    }
+
+    /* BOTÕES DO MENU - LADO A LADO NO MOBILE */
+    .data-panel {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 20px;
+        flex-wrap: nowrap;
+    }
+
+    .card {
+        flex: 1;
+        padding: 5px;
+        min-width: 0;
+    }
+
+    .button-image {
+        width: 100%;
+        height: auto;
+        max-height: 120px;
+        object-fit: contain;
+    }
+
+    .reports-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .report-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-item {
+        padding: 12px 8px;
+    }
+
+    .stat-value {
+        font-size: 1.4em;
+    }
+
+    .stat-label {
+        font-size: 0.7em;
+    }
+
+    /* FORMULÁRIOS MOBILE - MELHOR ALINHAMENTO */
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #9fe6a0;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        font-size: 16px; /* Evita zoom no iOS */
+        padding: 15px;
+        height: auto;
+        min-height: 50px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        background: rgba(26, 26, 46, 0.8);
+        color: #e0e0e0;
+        box-sizing: border-box;
+    }
+
+    .form-group select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e0e0e0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        background-size: 20px;
+        padding-right: 45px;
+    }
+
+    .add-exercise-btn,
+    .pdf-btn {
+        font-size: 1.1em;
+        padding: 18px;
+        min-height: 55px;
+        border-radius: 12px;
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    .btn-voltar {
+        margin-bottom: 15px;
+    }
+
+    .btn-voltar img {
+        width: 30px;
+    }
+
+    .back-button {
+        padding: 15px 25px;
+        font-size: 1em;
+        margin: 20px auto;
+        display: block;
+        width: fit-content;
+        border-radius: 12px;
+    }
+
+    .back-button-image {
+        display: block;
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    .back-button-image img {
+        max-width: 120px;
+        height: auto;
+    }
+
+    .next-workouts h2,
+    .reports h2 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    .form-card h3 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        color: #ffffff;
+        border-bottom: 2px solid #9fe6a0;
+        padding-bottom: 10px;
+    }
+
+    .form-card {
+        padding: 20px 15px;
+        margin-bottom: 15px;
+        border-radius: 15px;
+    }
+
+    .workout-list {
+        padding: 20px 15px;
+    }
+
+    .empty-state {
+        padding: 25px 15px;
+    }
+
+    .empty-state .empty-icon {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 3px;
+    }
+
+    .container {
+        padding: 8px;
+        border-radius: 12px;
+    }
+
+    .header .fitcraft-logo-header {
+        max-width: 180px;
+        margin-bottom: 12px;
+    }
+
+    /* BOTÕES AINDA MENORES PARA TELAS PEQUENAS */
+    .data-panel {
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+
+    .card {
+        padding: 3px;
+    }
+
+    .button-image {
+        max-height: 100px;
+    }
+
+    .main-title {
+        font-size: 1.4em;
+        letter-spacing: 1px;
+    }
+
+    .next-workouts h2,
+    .reports h2,
+    .form-card h3 {
+        font-size: 1.1em;
+    }
+
+    .report-card {
+        padding: 12px 8px;
+    }
+
+    .report-card .chart-placeholder {
+        width: 40px;
+        height: 40px;
+        font-size: 1.6em;
+    }
+
+    .stat-item {
+        padding: 10px 6px;
+    }
+
+    .stat-value {
+        font-size: 1.2em;
+    }
+
+    .stat-label {
+        font-size: 0.65em;
+    }
+
+    .treino-item,
+    .exercise-item {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .treino-header h4,
+    .exercise-item h3 {
+        font-size: 0.95em;
+    }
+
+    .treino-data,
+    .treino-info,
+    .exercise-item .details,
+    .exercise-item .technique {
+        font-size: 0.75em;
+    }
+
+    .exercise-item .remove-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 0.65em;
+    }
+
+    /* FORMULÁRIOS AINDA MAIS COMPACTOS */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+        padding: 12px;
+        min-height: 45px;
+        border-radius: 10px;
+    }
+
+    .add-exercise-btn,
+    .pdf-btn {
+        font-size: 1em;
+        padding: 15px;
+        min-height: 50px;
+        border-radius: 10px;
+    }
+
+    .btn-voltar img {
+        width: 25px;
+    }
+
+    .back-button {
+        padding: 12px 20px;
+        font-size: 0.9em;
+        border-radius: 10px;
+    }
+
+    .back-button-image img {
+        max-width: 100px;
+    }
+
+    .form-card {
+        padding: 15px 10px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+    }
+
+    .workout-list {
+        padding: 15px 10px;
+    }
+
+    .empty-state {
+        padding: 20px 10px;
+    }
+
+    .empty-state .empty-icon {
+        font-size: 1.8em;
+    }
+}
+
+/* Estilos SIMPLES e FUNCIONAIS para PWA */
+@media (display-mode: standalone) {
+    /* Correção SIMPLES para teclado PWA */
+    input, textarea, select {
+        -webkit-user-select: text !important;
+        user-select: text !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+    }
+    
+    /* Garante foco visível */
+    input:focus, textarea:focus, select:focus {
+        outline: 2px solid #9fe6a0 !important;
+        outline-offset: 2px !important;
+    }
+    
+    /* Ajustes de viewport para PWA */
+    body {
+        padding-top: env(safe-area-inset-top, 20px);
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+        overflow-y: auto !important;
+    }
+}
+
+/* Melhorias para touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover,
+    .add-exercise-btn:hover,
+    .pdf-btn:hover,
+    .back-button:hover {
+        transform: none; /* Remove hover effects em touch devices */
+    }
+    
+    .card:active,
+    .add-exercise-btn:active,
+    .pdf-btn:active,
+    .back-button:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}
+
+
+
+
+/* Alinhamento à esquerda para página de criar fichas - FORÇADO */
+body {
+    text-align: left !important;
+}
+
+.container {
+    text-align: left !important;
+    margin: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.form-container {
+    text-align: left !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.form-card {
+    text-align: left !important;
+    margin: 0 0 15px 0 !important;
+    padding: 20px 15px !important;
+}
+
+.form-card h3 {
+    text-align: left !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.form-group {
+    text-align: left !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.form-group label {
+    text-align: left !important;
+    display: block !important;
+    margin: 0 0 8px 0 !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+.form-row {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.add-exercise-btn,
+.pdf-btn {
+    text-align: center !important;
+    margin: 15px 0 0 0 !important;
+    align-self: flex-start !important;
+}
+
+/* Correções específicas para mobile - alinhamento à esquerda FORÇADO */
+@media (max-width: 768px) {
+    /* Alinhamento à esquerda em mobile - FORÇADO */
+    body {
+        text-align: left !important;
+    }
+    
+    .container {
+        text-align: left !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin: 0 !important;
+    }
+    
+    .form-card {
+        text-align: left !important;
+        margin: 0 0 15px 0 !important;
+        padding: 20px 15px !important;
+    }
+    
+    .form-card h3 {
+        text-align: left !important;
+        margin: 0 0 20px 0 !important;
+    }
+    
+    .form-group {
+        text-align: left !important;
+        margin: 0 0 20px 0 !important;
+    }
+    
+    .form-group label {
+        text-align: left !important;
+        margin: 0 0 8px 0 !important;
+    }
+    
+    .form-row {
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Correção adicional para inputs no PWA */
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
+        -webkit-user-select: text;
+        user-select: text;
+        -webkit-touch-callout: default;
+        touch-action: manipulation;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        background: rgba(26, 26, 46, 0.8);
+        color: #e0e0e0;
+        font-size: 16px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left !important;
+        margin: 0 !important;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        outline: 2px solid #9fe6a0;
+        outline-offset: 2px;
+        border-color: #9fe6a0;
+        -webkit-tap-highlight-color: rgba(159, 230, 160, 0.3);
+    }
+}
+

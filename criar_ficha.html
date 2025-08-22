@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>Criar Ficha de Treino - FitCraft</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="FitCraft Personal">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2f3e5c">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA Keyboard Fix -->
+    <script src="pwa-keyboard-fix.js"></script>
+    
+    <!-- Script PWA Inline para garantir funcionamento -->
+    <script>
+    // Solução ROBUSTA para teclado PWA - Execução garantida
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('PWA Keyboard Fix - Iniciando inline...');
+        
+        function fixInputsInline() {
+            const inputs = document.querySelectorAll('input, textarea');
+            console.log('Inputs encontrados (inline):', inputs.length);
+            
+            inputs.forEach((input, index) => {
+                console.log(`Configurando input ${index} (inline):`, input.type, input.id);
+                
+                // Remove atributos que podem bloquear
+                input.removeAttribute('readonly');
+                input.removeAttribute('disabled');
+                
+                // Força propriedades essenciais
+                input.style.pointerEvents = 'auto';
+                input.style.userSelect = 'text';
+                input.style.webkitUserSelect = 'text';
+                input.style.touchAction = 'manipulation';
+                
+                // Event listeners SIMPLES e FUNCIONAIS
+                input.addEventListener('touchstart', function(e) {
+                    console.log('TouchStart no input (inline):', this.id || this.type);
+                    this.focus();
+                }, { passive: true });
+                
+                input.addEventListener('click', function(e) {
+                    console.log('Click no input (inline):', this.id || this.type);
+                    this.focus();
+                });
+                
+                input.addEventListener('focus', function(e) {
+                    console.log('Focus no input (inline):', this.id || this.type);
+                    // Força o cursor no final
+                    setTimeout(() => {
+                        if (this.value) {
+                            this.setSelectionRange(this.value.length, this.value.length);
+                        }
+                    }, 10);
+                });
+            });
+        }
+        
+        // Executa imediatamente
+        fixInputsInline();
+        
+        // Reexecuta quando novos elementos são adicionados
+        const observer = new MutationObserver(fixInputsInline);
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        console.log('PWA Keyboard Fix - Configurado inline!');
+    });
+    </script>
+    
+    <!-- PDFMake CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+           <button class="btn-voltar" onclick="window.location.href='index.html'">
+                <img src="images/botao_voltar_sem_fundo.png" alt="Voltar">
+            </button>      </header>
+
+        <section class="workout-creator">
+            <div class="form-card">
+                <h3>Dados do Aluno</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome-aluno">Nome do Aluno</label>
+                        <input type="text" id="nomeAluno" placeholder="Digite o nome completo do aluno" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-troca">Data de Troca da Ficha</label>
+                        <input type="date" id="data-troca">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="observacoes">Observações do Aluno (Opcional)</label>
+                    <textarea id="observacoes" placeholder="Ex: Lesões, limitações, objetivos específicos..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <h3>Adicionar Exercício</h3>
+                <div class="form-group">
+                    <label for="grupo-muscular">Grupo Muscular</label>
+                    <select id="grupo-muscular">
+                        <option value="">Selecione o grupo muscular</option>
+                        <option value="peitoral">Peitoral</option>
+                        <option value="dorsais">Dorsais (Costas)</option>
+                        <option value="ombros">Ombros (Deltoides)</option>
+                        <option value="biceps">Bíceps</option>
+                        <option value="triceps">Tríceps</option>
+                        <option value="quadriceps">Quadríceps</option>
+                        <option value="posteriores_de_coxa">Posteriores de Coxa</option>
+                        <option value="gluteos">Glúteos</option>
+                        <option value="panturrilhas">Panturrilhas</option>
+                        <option value="trapezio">Trapézio</option>
+                        <option value="eretores_da_espinha">Eretores da Espinha</option>
+                        <option value="cardio_academia">Cardio Academia</option>
+                        <option value="abdomen">Abdômen</option>
+                        <option value="antebracos">Antebraços</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="exercicio">Exercício</label>
+                    <select id="exercicio" disabled>
+                        <option value="">Primeiro selecione o grupo muscular</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="series">Séries</label>
+                        <input type="number" id="series" min="1" max="10" value="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="repeticoes">Repetições</label>
+                        <input type="number" id="repeticoes" min="1" max="50" value="12">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tecnica">Técnica (Opcional)</label>
+                    <select id="tecnica">
+                        <option value="">Nenhuma técnica</option>
+                        <option value="Drop set">Drop set</option>
+                        <option value="Rest-pause">Rest-pause</option>
+                        <option value="Bi-set">Bi-set</option>
+                        <option value="Tri-set">Tri-set</option>
+                        <option value="Giant set">Giant set</option>
+                        <option value="Super-set">Super-set</option>
+                        <option value="Pré-exaustão">Pré-exaustão</option>
+                        <option value="Pós-exaustão">Pós-exaustão</option>
+                        <option value="Isometria">Isometria</option>
+                        <option value="Parciais">Parciais</option>
+                        <option value="Forçada">Forçada</option>
+                        <option value="Negativa">Negativa</option>
+                        <option value="Cluster set">Cluster set</option>
+                        <option value="Piramidal crescente">Piramidal crescente</option>
+                        <option value="Piramidal decrescente">Piramidal decrescente</option>
+                        <option value="FST-7">FST-7</option>
+                    </select>
+                </div>
+                
+                <button class="add-exercise-btn" onclick="adicionarExercicio()">Adicionar à Ficha</button>
+            </div>
+
+            <div class="form-card">
+                <h3>Sua Ficha de Treino</h3>
+                <div class="counter">0 exercício(s) adicionado(s)</div>
+                
+                <div id="lista-exercicios">
+                    <div class="empty-state">
+                        <div class="empty-icon">📋</div>
+                        <div>
+                            <strong>Nenhum exercício adicionado ainda</strong><br>
+                            Selecione exercícios para começar sua ficha
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pdf-section" style="display: none;" class="pdf-section">
+                    <h4>Gerar PDF da Ficha</h4>
+                    <p>Esta versão inclui dúvidas frequentes sobre treino e usa PDFMake atualizado para máxima compatibilidade.</p>
+                    
+                    <button class="pdf-btn" id="btn-gerar-pdf">
+                        📄 Gerar PDF Completo
+                    </button>
+                    
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Gerando PDF...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="criar_ficha_script.js"></script>
+</body>
+</html>
+
+
+
+    <script>
+        if (
+            'serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered: ', registration);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+
+
